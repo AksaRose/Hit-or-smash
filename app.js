@@ -48,9 +48,9 @@ function Start () {
     
     heading.textContent = "Smash or Pass";
     const para = document.createElement('p');
-    para.textContent = "you ready??";
+    para.textContent = "Answer the following this or that questions and lets see if I smash or pass you.";
     const button = document.createElement('button');
-    button.textContent= "lets goooo";
+    button.textContent= "lets gooo!!!";
 
     description.appendChild(para);
     description.appendChild(button);
@@ -84,11 +84,28 @@ function Start () {
             });
             description.appendChild(optCont);
         }
-        else{
-            description.textContent = "Finished";
-            description.textContent = `your score is ${mark}`
+        else {
+            if (mark >= 7) {
+                description.textContent = `Your score is ${mark}. Guess what?? I definitely gonna Smash you!!. Send me the screenshot, I wanna seeeee`;
+            } else {
+                description.textContent = `Your score is ${mark}. Oopsyy, I might have to pass you. but heyy, a quiz can't define how awesome person you are!!`;
+            }
+            const resetbutt = document.createElement('button');
+            resetbutt.textContent = "Restart";
+            resetbutt.addEventListener("click", reset);
+            description.appendChild(resetbutt);
+
+            function reset() {
+                description.innerHTML = '';
+                heading.innerHTML = '';
+                currentQuestionIndex = 0;
+                mark = 0; 
+                Start();
+            }
         }
+       
     }
+
 };
 Start();
 
